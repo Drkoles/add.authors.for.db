@@ -19,11 +19,25 @@ add_action('admin_menu', 'CreateMyPluginMenu');
 	{
 		echo "<h2>Настройки Authors.</h2>";
 ?>
-	<form method = "POST">
-	Добавить в базу:
-		<input type = "text" value = "Ссылка на CSV" name = "ssilka">
-		<input type = "submit" name = "Enter">
+	<form id = "ajaxform" method = "POST">
+	ЧТо то там:
+		<input type = "text" value = "" name = "ssilka">
+		<input id = "getForecast" type = "submit" name = "Enter">
 	</form>
+<script type="text/javascript" >
+(function($) {
+$(document).on('click', '#getForecast', function(e){
+e.preventDefault();
+var data = {
+'action': 'my_action',
+'whatever': 'Соси' 
+};
+$.post(ajaxurl, data, function(response) {
+alert(response);
+});
+});
+})(jQuery);
+</script>
 <?php
-	}
+}
 ?>
