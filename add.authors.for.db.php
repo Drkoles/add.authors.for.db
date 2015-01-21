@@ -24,6 +24,9 @@ add_action('admin_menu', 'CreateMyPluginMenu');
 		<input type = "text" value = "" name = "ssilka">
 		<input id = "getForecast" type = "submit" name = "Enter">
 	</form>
+<?php 
+}
+?>
 <script type="text/javascript" >
 (function($) {
 	$(document).on('click', '#getForecast', function(e){
@@ -45,6 +48,5 @@ function my_action_callback() {
 	$whatever = $_POST['whatever'];
         echo $whatever;
 	wp_die(); // this is required to terminate immediately and return a proper response
-}
 }
 ?>
