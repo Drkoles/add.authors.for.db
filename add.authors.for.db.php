@@ -26,18 +26,25 @@ add_action('admin_menu', 'CreateMyPluginMenu');
 	</form>
 <script type="text/javascript" >
 (function($) {
-$(document).on('click', '#getForecast', function(e){
-e.preventDefault();
-var data = {
-'action': 'my_action',
-'whatever': 'Соси' 
-};
+	$(document).on('click', '#getForecast', function(e){
+	e.preventDefault();
+		var data = {
+		'action': 'my_action',
+		'whatever': 'Соси' 
+		};
 $.post(ajaxurl, data, function(response) {
-alert(response);
-});
+	alert(response);
+	});
 });
 })(jQuery);
 </script>
 <?php
+add_action( 'wp_ajax_my_action', 'my_action_callback' );
+function my_action_callback() {
+	global $wpdb; 
+	$whatever = $_POST['whatever'];
+        echo $whatever;
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
 }
 ?>
