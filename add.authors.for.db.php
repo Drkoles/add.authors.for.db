@@ -68,8 +68,9 @@ function my_action_callback() {
 						$insertValuesMass[] = array($year,$month,$page,$insertValues[1],$insertValues[2],$insertValues[3],$insertValues[4],$insertValues[5]);
 					}
 			}		
+	update_option( 'option_mass', $insertValuesMass ); //для проверки
 	$whatever = var_dump($insertValuesMass);
-	update_option( 'option_mass', $whatever );
+	echo $whatever;
 	wp_die();
 }
 ?>
