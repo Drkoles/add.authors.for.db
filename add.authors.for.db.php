@@ -8,6 +8,11 @@ Author: Kolesov Alexey
 Author URI: http://
 */
 add_action('admin_menu', 'CreateMyPluginMenu');
+add_action( 'admin_init', 'register_mysettings');
+	function register_mysettings() 
+		{
+			register_setting( 'my-plugin-settings-group', 'option_mass' );
+		}
 	function CreateMyPluginMenu()
 	{
 		if (function_exists('add_options_page'))
@@ -64,7 +69,7 @@ function my_action_callback() {
 					}
 			}		
 	$whatever = var_dump($insertValuesMass);
-    echo $whatever;
+	update_option( 'option_mass', $whatever );
 	wp_die();
 }
 ?>
